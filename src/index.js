@@ -2,6 +2,8 @@ import express from 'express';
 
 import { SoundCloudGraphQLSchema } from './schema';
 
+// Need to import Instagram and Twitter Schemas here
+
 require('dotenv').config();
 
 var graphqlHTTP = require('express-graphql');

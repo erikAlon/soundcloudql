@@ -1,18 +1,23 @@
 import express from 'express';
 
-import {
-  SoundCloudGraphQLSchema
-} from './schema';
+import { SoundCloudGraphQLSchema } from './schema';
+
+require('dotenv').config();
 
 var graphqlHTTP = require('express-graphql');
 
 var app = express();
 
-app.use('/graphql', graphqlHTTP({
-  schema: SoundCloudGraphQLSchema,
-  graphiql: true
-}));
+const port = process.env.PORT;
 
-app.listen(process.env.PORT, function () {
-  console.log('Listening on port ' + process.env.PORT);
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: SoundCloudGraphQLSchema,
+    graphiql: true
+  })
+);
+
+app.listen(port, function() {
+  console.log(`Listening on port ${port}`);
 });
